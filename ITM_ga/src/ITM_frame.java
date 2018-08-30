@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
 import javax.swing.JFrame;
 
 
@@ -90,7 +91,8 @@ public class ITM_frame extends javax.swing.JFrame {
     private void jTextArea2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             try {
-                Files.write(Paths.get("ITM_feedback.txt"), (jTextArea2.getText() + "\n").getBytes(), StandardOpenOption.APPEND);
+                String messaggio = LocalDate.now() + ": " + jTextArea2.getText() + "\n";
+                Files.write(Paths.get("ITM_feedback.txt"), messaggio.getBytes(), StandardOpenOption.APPEND);
                 jTextArea2.setCaretPosition(0);
                 jTextArea2.setText("");
             }catch (IOException e) {
